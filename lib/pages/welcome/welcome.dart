@@ -138,7 +138,7 @@ class _WelcomeState extends State<Welcome> {
               );
             } else {
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil("myHomePage", (route) => false);
+                  .pushNamedAndRemoveUntil("register", (route) => false);
             }
           },
           child: Container(

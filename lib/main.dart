@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_university/app_blocs.dart';
 import 'package:my_university/app_events.dart';
 import 'package:my_university/app_states.dart';
+import 'package:my_university/pages/register/register.dart';
 import 'package:my_university/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:my_university/pages/welcome/welcome.dart';
 
@@ -31,9 +32,14 @@ class MyApp extends StatelessWidget {
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            appBarTheme:
+                const AppBarTheme(elevation: 0, backgroundColor: Colors.white),
+          ),
           home: const Welcome(),
           routes: {
-            "myHomePage": (context) => const MyHomePage(),
+            //"myHomePage": (context) => const MyHomePage(),
+            "register": (context) => const Register(),
           },
         ),
       ),
@@ -41,56 +47,56 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({super.key});
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("My Home Page"),
-        ),
-        body: Center(
-            // Center is a layout widget. It takes a single child and positions it
-            // in the middle of the parent.
-            child: BlocBuilder<AppBloc, AppStates>(
-          builder: (context, state) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "This is score:",
-                ),
-                Text('${state.counter}')
-              ],
-            );
-          },
-        )),
-        floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            FloatingActionButton(
-              heroTag: "heroTag1",
-              onPressed: () =>
-                  BlocProvider.of<AppBloc>(context).add(Increment()),
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            ),
-            FloatingActionButton(
-              heroTag: "heroTag2",
-              onPressed: () =>
-                  BlocProvider.of<AppBloc>(context).add(Decrement()),
-              tooltip: 'Decrement',
-              child: const Icon(Icons.remove),
-            ),
-          ],
-        )
-        // This trailing comma makes auto-formatting nicer for build methods.
-        );
-  }
-}
+// class _MyHomePageState extends State<MyHomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: const Text("My Home Page"),
+//         ),
+//         body: Center(
+//             // Center is a layout widget. It takes a single child and positions it
+//             // in the middle of the parent.
+//             child: BlocBuilder<AppBloc, AppStates>(
+//           builder: (context, state) {
+//             return Column(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: [
+//                 const Text(
+//                   "This is score:",
+//                 ),
+//                 Text('${state.counter}')
+//               ],
+//             );
+//           },
+//         )),
+//         floatingActionButton: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceAround,
+//           children: [
+//             FloatingActionButton(
+//               heroTag: "heroTag1",
+//               onPressed: () =>
+//                   BlocProvider.of<AppBloc>(context).add(Increment()),
+//               tooltip: 'Increment',
+//               child: const Icon(Icons.add),
+//             ),
+//             FloatingActionButton(
+//               heroTag: "heroTag2",
+//               onPressed: () =>
+//                   BlocProvider.of<AppBloc>(context).add(Decrement()),
+//               tooltip: 'Decrement',
+//               child: const Icon(Icons.remove),
+//             ),
+//           ],
+//         )
+//         // This trailing comma makes auto-formatting nicer for build methods.
+//         );
+//   }
+// }
